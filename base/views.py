@@ -162,3 +162,15 @@ def trestore_all(request):
 def tdelete_all(request):
     data = TrashModel.objects.all().delete()
     return redirect('trash')
+
+
+def hdelete(request, pk):
+    data = TodoModel.objects.get(id=pk)
+
+    TrashModel.objects.create(
+        title=data.title,
+        desc=data.desc
+    )
+
+    data.delete()
+    return redirect('trash')
