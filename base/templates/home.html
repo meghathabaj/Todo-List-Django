@@ -1,0 +1,39 @@
+
+{% extends 'main.html' %}
+{%  load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+    <center>
+        <h1>Home</h1>
+        <a href="{% url 'hcomplete_all' %}">Complete all</a>
+        <a href="{% url 'hdelete_all' %}">Delete all</a>
+        
+        <table border="1" cellspacing="2">
+           <div class="head">
+             <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+           </div>
+            
+            <tr>
+                
+                {% for i in data %}
+            <td><h3>{{i.id}}</h3></td>
+             <td><h3>{{i.title}}</h3> </td>
+            <td><p>{{i.desc}}</p></td>
+
+            <td><a href="{% url 'update' i.id %}">Update</a>
+            <a href="{% url 'hcomplete' i.id %}">Complete</a>
+            <a href="{% url 'hdelete' i.id %}">Delete</a></td>
+           </tr>  
+        {% endfor %}
+               
+            
+        </table>
+    </center>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <center>
+        <h1>Completed tasks</h1>
+        <a href="{% url 'crestore_all' %}">Crestore All</a>
+        <a href="{% url 'cdelete_all' %}">Cdelete All</a>
+       
+        {% for i in data %}
+        
+            <h2>{{i.title}}</h2>
+            <p>{{i.desc}}</p>
+            <a href="{% url 'crestore' i.id %}">Crestore</a>
+            <a href="{% url 'cdelete' i.id %}">Cdelete</a>
+        {% endfor %}
+    </center>
+
+{% endblock %}

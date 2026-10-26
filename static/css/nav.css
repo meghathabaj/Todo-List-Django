@@ -1,0 +1,26 @@
+nav {
+    height: 10vh;
+    width: 100%;
+    background: yellowgreen;
+    color: white;
+    display: flex;
+}
+
+.logo {
+    width: 25%;
+    text-align: center;
+    padding-top: 2.5vh;
+}
+
+.nav-links {
+    width: 75%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+}

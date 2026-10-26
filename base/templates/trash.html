@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <center>
+        <h1>Deleted records were stored here</h1>
+            <a href="{% url 'trestore_all' %}">Restore all</a>
+            <a href="{% url 'tdelete_all' %}">Delete all</a>
+        {% for i in data %}
+           
+            <h2>{{i.title}}</h2>
+            <p>{{i.desc}}</p>
+            <a href="{% url 'trestore' i.id %}">Trestore</a>
+            <a href="{% url 'tdelete' i.id %}">Tdelete</a>
+        {% endfor %}
+    </center>
+
+{% endblock %}
