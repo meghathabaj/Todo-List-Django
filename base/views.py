@@ -60,15 +60,17 @@ def hcomplete(request,pk):
     data.delete()
     return redirect('complete')
 
-def hdelete(request,pk):
-    data = TodoModel.objects.get(id=pk)
-    TrashModel.objects.create(
-        title = data.title,
-        desc = data.desc
-    )
-    data.delete()
-    return redirect('trash')
+def hdelete_all(request):
+    data = TodoModel.objects.all()
 
+    for i in data:
+        TrashModel.objects.create(
+            title=i.title,
+            desc=i.desc
+        )
+        i.delete()
+
+    return redirect('home')
 
 def hcomplete_all(request):
     data = TodoModel.objects.all()
@@ -140,15 +142,12 @@ def trestore(request,pk):
     return redirect('trash')
 
 
-def tdelete(request,pk):
-    data = TrashModel.objects.get(id = pk)
-
-    TodoModel.objects.create(
-        title = data.title,
-        desc = data.desc
-    )
+def tdelete(request, pk):
+    data = TrashModel.objects.get(id=pk)
     data.delete()
     return redirect('trash')
+
+
 
 def trestore_all(request):
     data = TrashModel.objects.all()
